@@ -3,10 +3,13 @@ My PolisNotationCalculator
 NUMEROS ENTEROS
 '''
 
-+ 1 2 # Resultado = 3
-- 56 6 # Resultado = 50
-+ * 3 4 6 # Resultado = 18
-cos 0 # Resultado = 1
-log 1 # Resultado = 0
-sen 0 # Resultado = 0
++ 1 2           # Resultado = 3
+- 56 6          # Resultado = 50
++ * 3 4 6       # Resultado = 18
+cos 0           # Resultado = 1
+log 1           # Resultado = 0
+sen 0           # Resultado = 0
 
+/ 0 1           # Resultado = 0
+/ 1 0           # Resultado = nan
+log -1          # Resultado = nan
