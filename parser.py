@@ -62,15 +62,15 @@ class ParserClass:
 
     def p_error(self, p):
         print("[Parser error]: Error en la sintaxis de entrada")
+    
     """
     def test(self, data):
         self.parser.parse(data)
     """
-
+    
     def test(self, data):
         lines = data.strip().split('\n')
         for i,line in enumerate(lines, start=1):
-            result = self.parser.parse(line)
-            if result is not None:
-                print(f"Line {i} result: {result}")
-        
+            resultado = self.parser.parse(line)
+            if resultado is not None:
+                print("[Line", i, "]", resultado)

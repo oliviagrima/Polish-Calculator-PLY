@@ -9,13 +9,13 @@ class LexerClass():
     'NEG', 'EXP', 'LOG', 'SIN', 'COS'
     )
 
-    def __init__(self):
-        self.lexer = lex.lex(module=self)
-
     t_MAS = r'\+'
     t_MENOS = r'-'
     t_MULT = r'\*'
     t_DIV = r'/'
+
+    def __init__(self):
+        self.lexer = lex.lex(module=self)
 
     def t_REAL(self, t):
         r'\d+\.\d+'
@@ -74,11 +74,8 @@ class LexerClass():
     def t_error(self, t):
         print("[Lexer error]: Error en el valor", t.value)
         t.lexer.skip(1)
-"""
+
     def test(self, data):
         self.lexer.input(data)
         for token in self.lexer:
             print(token.type, token.value)
-"""
-    
-            

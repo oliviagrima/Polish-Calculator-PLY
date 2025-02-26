@@ -12,5 +12,5 @@ if len (sys.argv) < 2:
 file_name = sys.argv[1]
 with open(file_name, 'r') as file:
     content = file.read()
-    #l.test(content)
+    ####l.test(content)
     p.test(content)

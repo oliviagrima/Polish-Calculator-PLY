@@ -1,0 +1,23 @@
+# PRUEBAS DE COMENTARIOS
+# Este es un comentario de una línea
+'''
+Este es un comentario
+de múltiples líneas
+No debe afectar el análisis
+'''
+
+# PRUEBAS DE OPERADORES Y FUNCIONES
++ 8 2          # Suma: 8 + 2 = 10
+- 20 5         # Resta: 20 - 5 = 15
+* 3 4          # Multiplicación: 3 * 4 = 12
+/ 10 2         # División: 10 / 2 = 5
+sin 0          # sin(0) = 0
+cos 0          # cos(0) = 1
+log 1          # log(1) = 0
+exp 2          # exp(2) = e^2
+
+# PRUEBAS DE NÚMEROS
+10             # Entero simple
+33.5           # Número real
+0b1010         # Binario → 10 en decimal
+0xFF34         # Hexadecimal → 65332 en decimal
