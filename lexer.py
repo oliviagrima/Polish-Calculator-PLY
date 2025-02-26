@@ -74,10 +74,11 @@ class LexerClass():
     def t_error(self, t):
         print("[Lexer error]: Error en el valor", t.value)
         t.lexer.skip(1)
-
+"""
     def test(self, data):
         self.lexer.input(data)
         for token in self.lexer:
             print(token.type, token.value)
+"""
     
             
