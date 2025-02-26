@@ -25,9 +25,11 @@ class ParserClass:
             p[0] = p[2] * p[3]
         elif p[1] == '/':
             if p[3] == 0:
-                raise ZeroDivisionError("nan")
+                p[0] = "nan"
             else:
                 p[0] = p[2] / p[3]
+        else:
+            p[0] = "nan"
     
     def p_exp_unaria(self, p):
         '''
@@ -43,13 +45,15 @@ class ParserClass:
             p[0] = math.exp(p[2])
         elif p[1] == 'log':
             if p[2] <= 0:
-                raise ValueError("nan")
+                p[0] = "nan"
             else:
                 p[0] = math.log10(p[2])
         elif p[1] == 'sin':
             p[0] = math.sin(p[2])
         elif p[1] == 'cos':
             p[0] = math.cos(p[2])
+        else:
+            p[0] = "nan"
 
     def p_exp_numero(self, p):
         '''
@@ -59,7 +63,21 @@ class ParserClass:
                     | HEXADECIMAL
         '''
         p[0] = p[1]
+    
+    """
+    def p_empty(self, p):
+        '''
+        expresion : empty
+        '''
+        p[0] = None
 
+    def p_empty_def(self, p):
+        '''
+        empty : 
+        '''
+        pass
+    """
+    
     def p_error(self, p):
         print("[Parser error]: Error en la sintaxis de entrada")
     

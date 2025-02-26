@@ -18,7 +18,7 @@ class LexerClass():
         self.lexer = lex.lex(module=self)
 
     def t_REAL(self, t):
-        r'\d+\.\d+'
+        r'-?\d+\.\d+'
         t.value = float(t.value)
         return t
 
@@ -33,7 +33,7 @@ class LexerClass():
         return t
     
     def t_ENTERO(self, t):
-        r'\d+'
+        r'-?\d+'
         t.value = int(t.value)
         return t
 
@@ -59,16 +59,16 @@ class LexerClass():
 
     def t_NEWLINE(self, t):
         r'\n+'
-        t.lexer.lineno += t.value.count("\n")
+        t.lexer.lineno += t.value.count('\n')
 
-    def t_ignore_SINGLE_COMMENT(self, t):
+    def t_SINGLE_COMMENT(self, t):
         r'\#.*'
         pass
 
-    def t_ignore_MULTI_COMMENT(self, t):
+    def t_MULTI_COMMENT(self, t):
         r"'''(.|\n)*?'''"
         pass
-    
+
     t_ignore = ' \t\n'
 
     def t_error(self, t):
