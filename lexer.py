@@ -69,7 +69,7 @@ class LexerClass():
         r"'''(.|\n)*?'''"
         pass
     
-    t_ignore = ' \t'
+    t_ignore = ' \t\n'
 
     def t_error(self, t):
         print("[Lexer error]: Error en el valor", t.value)
