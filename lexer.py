@@ -68,8 +68,6 @@ class LexerClass():
         print("[Lexer error]: Error en el valor", t.value)
         t.lexer.skip(1)
 
-    lexer = lex.lex()
-
     def test(self, data):
         self.lexer.input(data)
         for token in self.lexer:
