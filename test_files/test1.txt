@@ -1,0 +1,7 @@
+'''
+My PolisNotationCalculator, NUMEROS ENTEROS
+'''
+
++ 1 2 # This should output 3
+- 56 6 # This should output 50
++ * 3 4 6 # This should output 18

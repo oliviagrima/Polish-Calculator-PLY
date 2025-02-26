@@ -10,7 +10,7 @@ class ParserClass:
         self.lexer = LexerClass()
         self.parser = yacc.yacc(module=self)
 
-    def exp_binaria(self, p):
+    def p_exp_binaria(self, p):
         '''
         expresion : MAS expresion expresion
                    | MENOS expresion expresion 
@@ -29,7 +29,7 @@ class ParserClass:
             else:
                 p[0] = p[2] / p[3]
     
-    def exp_unaria(self, p):
+    def p_exp_unaria(self, p):
         '''
         expresion : NEG expresion
                    | EXP expresion
@@ -51,7 +51,7 @@ class ParserClass:
         elif p[1] == 'cos':
             p[0] = math.cos(p[2])
 
-    def exp_numero(self, p):
+    def p_exp_numero(self, p):
         '''
         expresion : ENTERO
                     | REAL

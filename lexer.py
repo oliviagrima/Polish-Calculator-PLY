@@ -2,14 +2,15 @@ import ply.lex as lex
 import ply.yacc as yacc
 
 class LexerClass():
-    def __init__(self):
-        self.lexer = lex.lex(module=self)
 
     tokens = (
     'ENTERO', 'REAL', 'BINARIO', 'HEXADECIMAL',
     'MAS', 'MENOS', 'MULT', 'DIV',
     'NEG', 'EXP', 'LOG', 'SIN', 'COS'
     )
+
+    def __init__(self):
+        self.lexer = lex.lex(module=self)
 
     t_MAS = r'\+'
     t_MENOS = r'-'
@@ -60,8 +61,14 @@ class LexerClass():
         r'\n+'
         t.lexer.lineno += t.value.count("\n")
 
-    t_ignore_COMMENT = r'\#.*'
-    t_ignore_MULTI_COMMENT = r"'''(.|\n)*?'''"
+    def t_ignore_SINGLE_COMMENT(self, t):
+        r'\#.*'
+        pass
+
+    def t_ignore_MULTI_COMMENT(self, t):
+        r"'''(.|\n)*?'''"
+        pass
+    
     t_ignore = ' \t'
 
     def t_error(self, t):
