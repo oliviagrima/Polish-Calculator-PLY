@@ -1,4 +1,3 @@
-import sys
 import ply.lex as lex
 import ply.yacc as yacc
 
@@ -66,7 +65,7 @@ class LexerClass():
     t_ignore = ' \t'
 
     def t_error(self, t):
-        print("Lexer error", t.value)
+        print("[Lexer error]: Error en el valor", t.value)
         t.lexer.skip(1)
 
     lexer = lex.lex()
