@@ -63,32 +63,34 @@ class ParserClass:
                     | HEXADECIMAL
         '''
         p[0] = p[1]
-    
-    """
-    def p_empty(self, p):
-        '''
-        expresion : empty
-        '''
-        p[0] = None
 
-    def p_empty_def(self, p):
-        '''
-        empty : 
-        '''
-        pass
-    """
-    
     def p_error(self, p):
         print("[Parser error]: Error en la sintaxis de entrada")
-    
+
     """
-    def test(self, data):
-        self.parser.parse(data)
-    """
-    
     def test(self, data):
         lines = data.strip().split('\n')
         for i,line in enumerate(lines, start=1):
             resultado = self.parser.parse(line)
+            if resultado is not None:
+                print("[Line", i, "]", resultado)
+    """
+
+    def test(self, data):
+        in_multiline_comment = False  # Bandera para detectar comentarios multilínea
+        
+        for i, line in enumerate(data.strip().split('\n'), start=1):
+            line = line.strip()
+
+            # Detectar inicio y fin de comentario multilínea
+            if line.startswith("'''"):
+                in_multiline_comment = not in_multiline_comment
+                continue  # Saltar la línea que contiene ''' para que no la procese el parser
+
+            if in_multiline_comment or not line or line.startswith('#'):
+                continue  # Saltar líneas dentro de comentarios multilínea o líneas vacías
+            
+            # Procesar la línea con el parser
+            resultado = self.parser.parse(line, lexer=self.lexer.lexer)
             if resultado is not None:
                 print("[Line", i, "]", resultado)
