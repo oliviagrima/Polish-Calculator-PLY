@@ -14,6 +14,11 @@ class LexerClass():
     t_MULT = r'\*'
     t_DIV = r'/'
 
+    states = (
+        ('comment', 'exclusive'),
+    )
+
+
     def __init__(self):
         self.lexer = lex.lex(module=self)
 
@@ -65,11 +70,27 @@ class LexerClass():
         r'\#.*'
         pass
 
-    def t_MULTI_COMMENT(self, t):
-        r"'''(.|\n)*?'''"
+    def t_MULTI_LINE_COMMENT(self, t):
+        r"'''"
+        t.lexer.begin('comment')
         pass
 
-    t_ignore = ' \t\n'
+    def t_comment_MULTI_LINE_COMMENT(self, t):
+        r"'''"
+        t.lexer.begin('INITIAL')
+        pass
+
+    def t_comment_CONTENT(self, t):
+        r"(.|\n)*?(?=''')"
+        t.lexer.lineno += t.value.count('\n')
+        pass
+
+    t_comment_ignore = " \t\n"
+
+    def t_comment_error(self, t):
+        t.lexer.skip(1)
+
+    t_ignore = ' \t'
 
     def t_error(self, t):
         print("[Lexer error]: Error en el valor", t.value)
