@@ -9,6 +9,7 @@ class ParserClass:
     def __init__(self):
         self.lexer = LexerClass()
         self.parser = yacc.yacc(module=self)
+        self.memory = {"{MEMORY}": 0}
 
     precedence = (
         ('left', 'MAS', 'MENOS'),
@@ -136,6 +137,19 @@ class ParserClass:
                     | NAN
         '''
         p[0] = p[1]
+
+    def p_exp_variable(self, p):
+        '''
+        expresion : MEMORY
+        '''
+        p[0] = self.memory["{MEMORY}"]
+
+    def p_exp_memory(self, p):
+        '''
+        expresion : MEMORY IGUAL expresion
+        '''
+        self.memory["{MEMORY}"] = p[3]
+        p[0] = p[3]
 
     def p_error(self, p):
         print("[Parser error]: Error en la sintaxis de entrada")

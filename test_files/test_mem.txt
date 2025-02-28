@@ -1,0 +1,3 @@
+{MEMORY} = 5
+{MEMORY} = * neg + * 7 {MEMORY} neg 5 neg 1
+/ {MEMORY} 2

@@ -7,13 +7,14 @@ class LexerClass():
     'ENTERO', 'REAL', 'BINARIO', 'HEXADECIMAL',
     'MAS', 'MENOS', 'MULT', 'DIV',
     'NEG', 'EXP', 'LOG', 'SIN', 'COS', 
-    'INF', 'NAN'
+    'INF', 'NAN', 'MEMORY', 'IGUAL'
     )
 
     t_MAS = r'\+'
     t_MENOS = r'-'
     t_MULT = r'\*'
     t_DIV = r'/'
+    t_IGUAL = r'='
 
     states = (
         ('comment', 'exclusive'),
@@ -69,6 +70,10 @@ class LexerClass():
     
     def t_NAN(self, t):
         r'nan'
+        return t
+    
+    def t_MEMORY(self, t):
+        r'{MEMORY}'
         return t
 
     def t_NEWLINE(self, t):
