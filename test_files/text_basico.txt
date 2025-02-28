@@ -1,0 +1,52 @@
+'''
+NUESTRA CALCULADORA POLACA
+----------TESTS---------
+'''
+
+# Operaciones simples
+
++ 2 3               # Resultado = 5
+- 0 1               # Resultado = -1
+* 5 neg 4           # Resultado = -20
+sin 0               # Resultado = 0.0
+log 1               # Resultado = 0.0
+cos 0               # Resultado = 1.0
+/ 0 20              # Resultado = 0.0
+/ 11 4              # Resultado = 2.75
+
+# Operaciones mas complejas
+
+* - + 1 2 3 5           # Resultado = 0
++ 5 neg 7               # Resultado = -2
+* 2 / 4 2               # Resultado = 4.0
+/ * 5 - 4 3 - 8 - 4 1   # Resultado = 1
++ sin exp 2 3           # Resultado = 3.89385
+exp 0                   # Resultado = 1.0
+
+# Errores basicos
+
+log 0                   # Resultado = nan
+log -10                 # Resultado = nan
+/ 1 0                   # Resultado = nan
+
+# Numeros 
+
+3                       # Resultado = 3
+-10                     # Resultado = -10
+103.2                   # Resultado = 103.2
+0x2BAF                  # Resultado = 11183
+0xF12A4                 # Resultado = 987812
+exp 4                   # Resultado = 54.5981
+0b0010                  # Resultado = 2
+
+# Salidas en las que hay error de entrada por lo que deberia imprimirse un error
++ 2 + 3                 # Parser error
+hola                    # Lexer error
+* 1 - 3                 # Parser error
+1 + 1                   # Parser error
+
+'''
+MODIFICACIONES AVANZADAS
+inf, memory
+'''
+

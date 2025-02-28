@@ -10,24 +10,89 @@ class ParserClass:
         self.lexer = LexerClass()
         self.parser = yacc.yacc(module=self)
 
+    precedence = (
+        ('left', 'MAS', 'MENOS'),
+        ('left', 'MULT', 'DIV'),
+        ('right','NEG', 'EXP', 'LOG', 'SIN', 'COS')
+        )
+
     def p_exp_binaria(self, p):
         '''
         expresion : MAS expresion expresion
                    | MENOS expresion expresion 
                    | MULT expresion expresion 
-                   | DIV expresion expresion 
+                   | DIV expresion expresion  
         '''
         if p[1] == '+':
-            p[0] = p[2] + p[3]
+            if p[2] == "inf" and p[3] == "inf":
+                    p[0] = "inf"
+            elif (p[2] == "inf" and p[3] == "-inf") or (p[2] == "-inf" and p[3] == "inf"):
+                    p[0] = "nan"
+            elif p[2] == "nan" or p[3] == "nan":
+                p[0] = "nan"
+            elif p[2] == "-inf" and p[3] == "-inf":
+                    p[0] = "-inf"
+            elif p[2] == "inf" or p[3] == "inf":
+                    p[0] = "inf"
+            elif p[2] == "-inf" or p[3] == "-inf":
+                    p[0] = "-inf"
+            else:
+                p[0] = p[2] + p[3]
+
         elif p[1] == '-':
-            p[0] = p[2] - p[3]
+            if (p[2] == "-inf" and p[3] == "-inf") or (p[2] == "inf" and p[3] == "inf"):
+                    p[0] = "nan"
+            elif p[2] == "nan" or p[3] == "nan":
+                p[0] = "nan"
+            elif p[2] == "inf" and p[3] == "-inf":
+                    p[0] = "inf"
+            elif p[2] == "-inf" and p[3] == "inf":
+                    p[0] = "-inf"
+            elif p[2] == "-inf" or p[3] == "inf":
+                    p[0] = "-inf"
+            elif p[2] == "inf" or p[3] == "-inf":
+                    p[0] = "inf"
+            else:
+                p[0] = p[2] - p[3]
+
         elif p[1] == '*':
-            p[0] = p[2] * p[3]
+            if p[2] == "inf" and p[3] == "inf":
+                p[0] = "inf"
+            elif (p[2] == "inf" and p[3] == "-inf") or (p[2] == "-inf" and p[3] == "inf"):
+                p[0] = "-inf"
+            elif p[2] == "-inf" and p[3] == "-inf":
+                p[0] = "inf"
+            elif p[2] == "nan" or p[3] == "nan":
+                p[0] = "nan"
+            elif (p[2] == "inf" and p[3] == 0) or (p[2] == 0 and p[3] == "inf") or (p[2] == "-inf" and p[3] == 0) or (p[2] == 0 and p[3] == "-inf"):
+                p[0] = "nan"
+            elif (p[2] == "inf" and p[3] < 0) or (p[2] < 0 and p[3] == "inf"):
+                p[0] = "-inf"
+            elif (p[2] == "-inf" and p[3] < 0) or (p[2] < 0 and p[3] == "-inf"):
+                p[0] = "inf"
+            elif (p[2] == "-inf" and p[3] > 0) or (p[2] > 0 and p[3] == "-inf"):
+                p[0] = "-inf"
+            elif  (p[2] == "inf" and p[3] > 0) or (p[2] > 0 and p[3] == "inf"):
+                p[0] = "inf"
+            else:
+                p[0] = p[2] * p[3]
+
         elif p[1] == '/':
-            if p[3] == 0:
+            if (p[2] == "inf" and p[3] == "inf") or (p[2] == "-inf" and p[3] == "-inf") or (p[2] == "inf" and p[3] == "-inf") or (p[2] == "-inf" and p[3] == "inf"):
+                p[0] = "nan"
+            elif p[2] == "nan" or p[3] == "nan":
+                p[0] = "nan"
+            elif (p[2] == "inf" and p[3] > 0) or (p[2] == "-inf" and p[3] < 0):
+                p[0] = "inf"
+            elif (p[2] == "-inf" and p[3] > 0) or (p[2] == "inf" and p[3] < 0):
+                p[0] = "-inf"
+            elif p[3] == "inf" or p[3] == "-inf":
+                p[0] = 0
+            elif p[3] == 0:
                 p[0] = "nan"
             else:
                 p[0] = p[2] / p[3]
+
         else:
             p[0] = "nan"
     
@@ -40,9 +105,15 @@ class ParserClass:
                    | COS expresion
         '''
         if p[1] == 'neg':
-            p[0] = -p[2]
+            if p[2] == "inf":
+                p[0] = "-inf"
+            else:
+                p[0] = -p[2]
         elif p[1] == 'exp':
-            p[0] = math.exp(p[2])
+            if p[2] == "inf" or p[2] == "-inf":
+                p[0] = "nan"
+            else:
+                p[0] = math.exp(p[2])
         elif p[1] == 'log':
             if p[2] <= 0:
                 p[0] = "nan"
@@ -61,6 +132,8 @@ class ParserClass:
                     | REAL
                     | BINARIO
                     | HEXADECIMAL
+                    | INF
+                    | NAN
         '''
         p[0] = p[1]
 
@@ -69,13 +142,17 @@ class ParserClass:
 
     """
     def test(self, data):
+        self.parser.parse(data, lexer=self.lexer.lexer)
+    """
+    """
+    def test(self, data):
         lines = data.strip().split('\n')
         for i,line in enumerate(lines, start=1):
             resultado = self.parser.parse(line)
             if resultado is not None:
                 print("[Line", i, "]", resultado)
     """
-
+    
     def test(self, data):
         in_multiline_comment = False  # Bandera para detectar comentarios multilínea
         

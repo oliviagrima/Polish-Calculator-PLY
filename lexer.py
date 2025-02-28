@@ -6,7 +6,8 @@ class LexerClass():
     tokens = (
     'ENTERO', 'REAL', 'BINARIO', 'HEXADECIMAL',
     'MAS', 'MENOS', 'MULT', 'DIV',
-    'NEG', 'EXP', 'LOG', 'SIN', 'COS'
+    'NEG', 'EXP', 'LOG', 'SIN', 'COS', 
+    'INF', 'NAN'
     )
 
     t_MAS = r'\+'
@@ -60,6 +61,14 @@ class LexerClass():
 
     def t_COS(self, t):
         r'cos'
+        return t
+
+    def t_INF(self, t):
+        r'inf'
+        return t
+    
+    def t_NAN(self, t):
+        r'nan'
         return t
 
     def t_NEWLINE(self, t):
