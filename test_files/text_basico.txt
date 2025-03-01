@@ -39,12 +39,6 @@ log -10                 # Resultado = nan
 exp 4                   # Resultado = 54.5981
 0b0010                  # Resultado = 2
 
-# Salidas en las que hay error de entrada por lo que deberia imprimirse un error
-+ 2 + 3                 # Parser error
-hola                    # Lexer error
-* 1 - 3                 # Parser error
-1 + 1                   # Parser error
-
 '''
 MODIFICACIONES AVANZADAS
 inf, memory

@@ -152,7 +152,10 @@ class ParserClass:
         p[0] = p[3]
 
     def p_error(self, p):
-        print("[Parser error]: Error en la sintaxis de entrada")
+        if p is None:
+            print("[Parser error]: Error en la sintaxis de entrada")
+        else:
+            print("[Parser error, linea", p.lineno,"]: Error en la sintaxis de entrada")
 
     """
     def test(self, data):
