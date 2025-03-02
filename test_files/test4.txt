@@ -1,0 +1,20 @@
+'''
+NUESTRA CALCULADORA POLACA
+-------TEST MEMORY-------
+'''
+
+# Memory deberia tener 0 almacenado de primeras
+
+{MEMORY} = + 7 {MEMORY}     # Resultado = 7
+
+# Probamos si funciona memory con mas operaciones
+
+{MEMORY} = 5                                    # Resultado = 5 
+{MEMORY} = * neg + * 7 {MEMORY} neg 5 neg 1     # Resultado = 30 
+/ {MEMORY} 2                                    # Resultado = 15.0 
+
+# Otro ejemplo
+
+{MEMORY} = 5                                    # Resultado = 5
+{MEMORY} = + / * {MEMORY} 4 10 neg 3            # Resultado = -1
+{MEMORY}                                        # Resultado = -1

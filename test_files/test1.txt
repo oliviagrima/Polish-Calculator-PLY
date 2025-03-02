@@ -1,0 +1,21 @@
+'''
+NUESTRA CALCULADORA POLACA
+-----TEST COMENTARIOS-----
+'''
+
+# Comentario que se debe ignorar
+
++ 2 3                   # Resultado = 5
+
+'''
+Comentario largo
+que se debe ignorar
+'''
+
+- 0 1                   # Resultado = -1
++ sin exp 2 3           # Resultado = 3.89385
+exp 0                   # Resultado = 1.0
+
+'''
+FIN
+'''

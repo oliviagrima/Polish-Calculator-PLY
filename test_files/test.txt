@@ -1,1 +1,0 @@
-{MEMORY} = + 7 {MEMORY}     # Resultado = 7

@@ -1,0 +1,144 @@
+'''
+NUESTRA CALCULADORA POLACA
+-------TEST INFINITO------
+'''
+
+# Basico 
+
+inf                     # Resultado = inf
+nan                     # Resultado = nan
+neg inf                 # Resultado = -inf
+
+'''
+SUMAS CON INFINITO
+'''
+# Sumas con respuesta inf
+
++ inf inf               # Resultado = inf
++ 20 inf                # Resultado = inf
++ neg 20 inf            # Resultado = inf
+
+# Sumas con respuesta -inf
+
++ neg inf neg inf       # Resultado = -inf
++ neg inf 20            # Resultado = -inf
++ neg 20 neg inf        # Resultado = -inf
+
+# Sumas con respuesta nan
+
++ neg inf inf           # Resultado = nan
++ inf neg inf           # Resultado = nan
++ inf nan               # Resultado = nan
++ neg inf nan           # Resultado = nan
++ 4 nan                 # Resultado = nan
+
+'''
+RESTAS CON INFINITO
+'''
+# Restas con respuesta inf
+
+- inf neg inf           # Resultado = inf
+- neg 20 neg inf        # Resultado = inf 
+
+# Restas con respuesta -inf
+
+- neg inf inf           # Resultado = -inf
+- 20 inf                # Resultado = -inf
+- neg inf 20            # Resultado = -inf
+- neg 20 inf            # Resultado = -inf
+
+# Restas con respuesta nan
+
+- inf inf               # Resultado = nan
+- neg inf neg inf       # Resultado = nan
+- inf nan               # Resultado = nan 
+- neg inf nan           # Resultado = nan
+- 3 nan                 # Resultado = nan
+
+'''
+MULTIPLICACIONES CON INFINITO
+'''
+# Multiplicaciones con respuesta inf
+
+* inf inf               # Resultado = inf
+* neg inf neg inf       # Resultado = inf
+* neg 4 neg inf         # Resultado = inf
+
+# Multiplicaciones con respuesta -inf
+
+* inf neg inf           # Resultado = -inf
+* inf neg 2             # Resultado = -inf
+* 4 neg inf             # Resultado = -inf
+
+# Multiplicaciones con respuesta nan
+
+* neg inf nan           # Resultado = nan
+* nan inf               # Resultado = nan
+* inf 0                 # Resultado = nan
+* 0 neg inf             # Resultado = nan
+* 0 nan                 # Resultado = nan
+* nan 3                 # Resultado = nan
+
+'''
+DIVISIONES CON INFINITO
+'''
+# Divisiones con respuesta inf
+
+/ 12 0                  # Resultado = inf
+/ inf 9                 # Resultado = inf
+/ neg inf neg 9         # Resultado = inf
+
+# Divisiones con respuesta -inf
+/ inf neg 9             # Resultado = -inf
+/ neg inf 9             # Resultado = -inf
+
+# Divisiones con respuesta 0
+
+/ 0 inf                 # Resultado = 0
+/ 7 inf                 # Resultado = 0
+/ neg 7 inf             # Resultado = 0
+/ 8 neg inf             # Resultado = 0
+/ neg 8 neg inf         # Resultado = 0
+
+# Divisiones con respuesta nan
+
+/ inf 0                 # Resultado = nan
+/ inf inf               # Resultado = nan
+/ neg inf inf           # Resultado = nan
+/ inf neg inf           # Resultado = nan
+/ neg inf neg inf       # Resultado = nan
+/ neg inf nan           # Resultado = nan
+/ nan inf               # Resultado = nan
+/ 3 nan                 # Resultado = nan
+
+'''
+EXPONENTES CON INFINITO o nan
+'''
+
+exp inf                 # Resultado = nan
+exp neg inf             # Resultado = nan
+exp nan                 # Resultado = nan
+
+'''
+LOGARITMOS CON INFINITO o nan
+'''
+
+log inf                 # Resultado = nan
+log neg inf             # Resultado = nan
+log nan                 # Resultado = nan
+
+'''
+COSENOS CON INFINITO o nan
+'''
+
+cos inf                 # Resultado = nan
+cos neg inf             # Resultado = nan
+cos nan                 # Resultado = nan
+
+'''
+SENOS CON INFINITO o nan
+'''
+
+sin inf                 # Resultado = nan
+sin neg inf             # Resultado = nan
+sin nan                 # Resultado = nan
