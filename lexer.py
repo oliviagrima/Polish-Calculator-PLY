@@ -1,6 +1,6 @@
 """
 P1 - Procesadores del Lenguaje
-Olivia Grima Pérez e Íñigo García-Velsaco González
+Olivia Grima Pérez e Íñigo García-Velasco González
 """
 
 import ply.lex as lex
