@@ -1,3 +1,8 @@
+"""
+P1 - Procesadores del Lenguaje
+Olivia Grima Pérez e Íñigo García-Velsaco González
+"""
+
 from lexer import LexerClass
 import ply.yacc as yacc
 import math
@@ -27,7 +32,7 @@ class ParserClass:
                         | expresion
         '''
         if len(p) == 3:
-            p[0] = p[1] + p[2]  # Acumula las expresiones en una lista
+            p[0] = p[1] + p[2]
         else:
             p[0] = p[1]  
 
@@ -161,12 +166,18 @@ class ParserClass:
             else:
                 resultado = math.exp(val2)
         elif p[1] == 'log':
-            if val2 <= 0 or val2 == "-inf" or val2 == "nan":
-                resultado = "nan"
-            elif val2 == "inf":
-                resultado = "inf"
-            else:
-                resultado = math.log10(val2)
+            if isinstance(val2, str):
+                if val2 == "inf":
+                    resultado = "inf"
+                elif val2 == "-inf" or val2 == "nan":
+                    resultado = "nan"
+                else:
+                    resultado = "nan"
+            else: 
+                if val2 <= 0:
+                    resultado = "nan"
+                else:
+                    resultado = math.log10(val2)
         elif p[1] == 'sin':
             if val2 == "inf" or val2 == "-inf" or val2 == "nan":
                 resultado = "nan"

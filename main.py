@@ -1,3 +1,8 @@
+"""
+P1 - Procesadores del Lenguaje
+Olivia Grima Pérez e Íñigo García-Velsaco González
+"""
+
 import os
 import sys
 from lexer import LexerClass

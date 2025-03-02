@@ -87,6 +87,7 @@ DIVISIONES CON INFINITO
 / 12 0                  # Resultado = inf
 / inf 9                 # Resultado = inf
 / neg inf neg 9         # Resultado = inf
+/ inf 0                 # Resultado = inf
 
 # Divisiones con respuesta -inf
 / inf neg 9             # Resultado = -inf
@@ -102,7 +103,6 @@ DIVISIONES CON INFINITO
 
 # Divisiones con respuesta nan
 
-/ inf 0                 # Resultado = nan
 / inf inf               # Resultado = nan
 / neg inf inf           # Resultado = nan
 / inf neg inf           # Resultado = nan
@@ -123,7 +123,7 @@ exp nan                 # Resultado = nan
 LOGARITMOS CON INFINITO o nan
 '''
 
-log inf                 # Resultado = nan
+log inf                 # Resultado = inf
 log neg inf             # Resultado = nan
 log nan                 # Resultado = nan
 
