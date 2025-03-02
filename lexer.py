@@ -99,7 +99,7 @@ class LexerClass():
         t.lexer.lineno += t.value.count('\n')
         pass
 
-    t_comment_ignore = " \t\n"
+    t_comment_ignore = " \t"
 
     def t_comment_error(self, t):
         t.lexer.skip(1)

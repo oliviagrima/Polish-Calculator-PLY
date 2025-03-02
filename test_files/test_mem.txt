@@ -1,3 +1,3 @@
-{MEMORY} = 5
-{MEMORY} = * neg + * 7 {MEMORY} neg 5 neg 1
-/ {MEMORY} 2
+{MEMORY} = 5                                    # Resultado = 5 
+{MEMORY} = * neg + * 7 {MEMORY} neg 5 neg 1     # Resultado = 30 
+/ {MEMORY} 2                                    # Resultado = 15.0 
