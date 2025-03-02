@@ -148,22 +148,32 @@ class ParserClass:
         if p[1] == 'neg':
             if val2 == "inf":
                 resultado = "-inf"
+            elif val2 == "nan":
+                resultado = "nan"
             else:
                 resultado = -val2
         elif p[1] == 'exp':
-            if val2 == "inf" or val2 == "-inf":
+            if val2 == "inf" or val2 == "-inf" or val2 == "nan":
                 resultado = "nan"
             else:
                 resultado = math.exp(val2)
         elif p[1] == 'log':
-            if val2 <= 0:
+            if val2 <= 0 or val2 == "-inf" or val2 == "nan":
                 resultado = "nan"
+            elif val2 == "inf":
+                resultado = "inf"
             else:
                 resultado = math.log10(val2)
         elif p[1] == 'sin':
-            resultado = math.sin(val2)
+            if val2 == "inf" or val2 == "-inf" or val2 == "nan":
+                resultado = "nan"
+            else:
+                resultado = math.sin(val2)
         elif p[1] == 'cos':
-            resultado = math.cos(val2)
+            if val2 == "inf" or val2 == "-inf" or val2 == "nan":
+                resultado = "nan"
+            else:
+                resultado = math.cos(val2)
         else:
             resultado = "nan"
 
