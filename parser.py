@@ -120,7 +120,10 @@ class ParserClass:
             elif val3 == "inf" or val3 == "-inf":
                 resultado = 0
             elif val3 == 0:
-                resultado = "nan"
+                if val2 == 0:
+                    resultado = "nan"
+                else:
+                    resultado = "inf"
             else:
                 resultado = val2 / val3 
 
