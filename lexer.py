@@ -20,7 +20,6 @@ class LexerClass():
         ('comment', 'exclusive'),
     )
 
-
     def __init__(self):
         self.lexer = lex.lex(module=self)
 

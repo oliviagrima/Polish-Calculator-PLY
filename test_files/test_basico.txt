@@ -28,6 +28,7 @@ exp 0                   # Resultado = 1.0
 log 0                   # Resultado = nan
 log -10                 # Resultado = nan
 / 1 0                   # Resultado = nan
+/ 0 0                   # Resultado = nan
 
 # Numeros 
 
