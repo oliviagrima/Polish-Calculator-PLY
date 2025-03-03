@@ -6,8 +6,8 @@ NUESTRA CALCULADORA POLACA
 # Basico 
 
 inf                     # Resultado = inf
-nan                     # Resultado = nan
 neg inf                 # Resultado = -inf
+nan                     # Resultado = nan
 
 '''
 SUMAS CON INFINITO

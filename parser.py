@@ -16,12 +16,6 @@ class ParserClass:
         self.parser = yacc.yacc(module=self)
         self.memory = {"{MEMORY}": 0}
 
-    precedence = (
-        ('left', 'MAS', 'MENOS'),
-        ('left', 'MULT', 'DIV'),
-        ('right','NEG', 'EXP', 'LOG', 'SIN', 'COS')
-        )
-
     def p_program(self, p):
         ''' program : lista_expresiones '''
         p[0] = p[1]
