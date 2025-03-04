@@ -1,0 +1,8 @@
+'''
+NUESTRA CALCULADORA POLACA
+-----TEST DE ERRORES 2----
+'''
+
+hola            # Lexer error por cada letra
+
+2 + 2           # Syntax error y Parser error   

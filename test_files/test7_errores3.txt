@@ -1,0 +1,7 @@
+'''
+NUESTRA CALCULADORA POLACA
+-----TEST DE ERRORES 3----
+'''
++ 2 € 2          # Deberia imprimir un lexer error por el €
+                 # Según tenemos hecho el codigo, luego deberia imprimir 4 
+                 # ya que con el skip ignoramos el caracter del €

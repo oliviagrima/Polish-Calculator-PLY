@@ -1,0 +1,12 @@
+'''
+NUESTRA CALCULADORA POLACA
+-----TEST DE ERRORES 1----
+'''
+
+# Lexer error por cada letra
+
+adios
+
+dos mas dos
+
+# A continuación parser error porque como no le llega nada no se puede procesar

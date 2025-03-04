@@ -111,7 +111,7 @@ class LexerClass():
     t_ignore = ' \t'
 
     def t_error(self, t):
-        print("[Lexer error, línea", t.lineno,"]: Error en el valor", t.value)
+        print("[Lexer error, línea", t.lineno,"]: Error en el valor", t.value[0])
         t.lexer.skip(1)
 
     def test(self, data):

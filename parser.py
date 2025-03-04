@@ -17,7 +17,8 @@ class ParserClass:
         self.memory = {"{MEMORY}": 0}
 
     def p_program(self, p):
-        ''' program : lista_expresiones '''
+        ''' program : lista_expresiones 
+                    | empty'''
         p[0] = p[1]
 
     def p_lista_expresiones(self, p):
@@ -29,6 +30,10 @@ class ParserClass:
             p[0] = p[1] + p[2]
         else:
             p[0] = p[1]  
+    
+    def p_empty(self, p):
+        ''' empty : '''
+        p[0] = []
 
     def p_exp_binaria(self, p):
         '''
@@ -217,11 +222,11 @@ class ParserClass:
         p[0] = [(p.lineno(1), self.memory["{MEMORY}"])]
 
     def p_error(self, p):
-        print("[Parser error]: Error en la sintaxis de entrada")
+        print("[Syntax error]: Error en la sintaxis de entrada")
 
     def test(self, data):
         resultado = self.parser.parse(data, lexer=self.lexer.lexer)
-        if resultado is not None:
+        if resultado:
             for line, result in resultado:
                 print("[Line", line, "]", result)
         else:
